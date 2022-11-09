@@ -1,0 +1,396 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Drug Analyis Predictor</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  </head>
+  <body class="bg-dark">
+
+    <div class="text-center" style="margin-left: auto; margin-right: auto;">
+
+      <a href="{% url 'predict' %}">
+        <img class="text-center" src="{% static 'img/logo.png' %}" width="250" height="250">
+      </a>
+
+    </div>
+
+      <section class="container pt-3 bg-secondary border rounded" style="max-width: 1000px;">
+
+        <div class="row justify-content-evenly">
+
+          <div class="col-4 table-responsive">
+
+            <form method="post" action="{% url 'results' %}">
+              {% csrf_token %}
+              <table class="table table-borderless align-middle" style="max-width: 350px; margin-left: auto; margin-right: auto;">
+
+                <tbody>
+
+                  <tr>
+
+                    <td class="text-center"><span class="fw-bold text-white">Age : </span></td>
+
+                    <td>
+
+                      <div class="input-group mt-2 mb-3" style="max-width: 200px; margin-left: auto; margin-right: auto;">
+                        <input type="text" class="form-control" placeholder="Enter Age" aria-label="age" aria-describedby="basic-addon1" name="age">
+                      </div>
+
+                    </td>
+                    
+
+                  </tr>
+
+                  <tr>
+
+                    <td class="text-center"><span class="fw-bold text-white">Gender : </span></td>
+
+                    <td>
+
+                      <select name="gender" class="form-select">
+                        
+                        <option value="" class="text-center">--Select--</option>
+                        <option value="0" class="text-center">Male</option>
+                        <option value="1" class="text-center">Female</option>
+                      
+                      </select>
+
+                    </td>
+                    
+
+                  </tr>
+
+                  <tr>
+
+                    <td class="text-center"><span class="fw-bold text-white">Race : </span></td>
+
+                    <td>
+
+                      <select name="race" class="form-select">
+                        
+                        <option value="" class="text-center">--Select--</option>
+                        <option value="0" class="text-center">White</option>
+                        <option value="1" class="text-center">Hispanic White</option>
+                        <option value="2" class="text-center">Black</option>
+                        <option value="3" class="text-center">Hispanic Black</option>
+                        <option value="4" class="text-center">Asian Other</option>
+                        <option value="5" class="text-center">Asian Indian</option>
+                        <option value="6" class="text-center">Chinese</option>
+                        <option value="7" class="text-center">Hawaiian</option>
+                        <option value="8" class="text-center">Native American</option>
+                        <option value="9" class="text-center">Other</option>
+                      
+                      </select>
+                    </td>
+                    
+
+                  </tr>
+
+                  <tr>
+
+                    <td class="text-center"><span class="fw-bold text-white">Place of Death : </span></td>
+
+                    <td>
+
+                      <select name="deathcity" class="form-select">
+
+                        <option value="" class="text-center">--Select--</option>
+                        <option value="1" class="text-center">6340</option>
+                        <option value="2" class="text-center">AMSTON</option>
+                        <option value="3" class="text-center">ANDOVER</option>
+                        <option value="4" class="text-center">ANSONIA</option>
+                        <option value="5" class="text-center">ASHFORD</option>
+                        <option value="6" class="text-center">AVON</option>
+                        <option value="7" class="text-center">BAKERSVILLE</option>
+                        <option value="8" class="text-center">BALTIC</option>
+                        <option value="9" class="text-center">BANTAM</option>
+                        <option value="10" class="text-center">BARKHAMSTED</option>
+                        <option value="11" class="text-center">BEACON FALLS</option>
+                        <option value="12" class="text-center">BERLIN</option>
+                        <option value="13" class="text-center">BETHANY</option>
+                        <option value="14" class="text-center">BETHEL</option>
+                        <option value="15" class="text-center">BETHLEHEM</option>
+                        <option value="16" class="text-center">BLOOMFIELD</option>
+                        <option value="17" class="text-center">BOLTON</option>
+                        <option value="18" class="text-center">BOZRAH</option>
+                        <option value="19" class="text-center">BRANFORD</option>
+                        <option value="20" class="text-center">BRIDGEPORT</option>
+                        <option value="21" class="text-center">BRIDGEWATER</option>
+                        <option value="22" class="text-center">BRISTOL</option>
+                        <option value="23" class="text-center">BROAD BROOK</option>
+                        <option value="24" class="text-center">BROOKFIELD</option>
+                        <option value="25" class="text-center">BROOKLYN</option>
+                        <option value="26" class="text-center">BURLINGTON</option>
+                        <option value="27" class="text-center">CANTERBURY</option>
+                        <option value="28" class="text-center">CANTON</option>
+                        <option value="29" class="text-center">CENTRAL VILLAGE</option>
+                        <option value="30" class="text-center">CHAPLIN</option>
+                        <option value="31" class="text-center">CHESHIRE</option>
+                        <option value="32" class="text-center">CHESTER</option>
+                        <option value="33" class="text-center">CLINTON</option>
+                        <option value="34" class="text-center">COLCHESTER</option>
+                        <option value="35" class="text-center">COLUMBIA</option>
+                        <option value="36" class="text-center">CORNWALL BRIDGE</option>
+                        <option value="37" class="text-center">COS COB</option>
+                        <option value="38" class="text-center">COVENTRY</option>
+                        <option value="39" class="text-center">CROMWELL</option>
+                        <option value="40" class="text-center">DANBURY</option>
+                        <option value="41" class="text-center">DANIELSON</option>
+                        <option value="42" class="text-center">DARIEN</option>
+                        <option value="43" class="text-center">DAYVILLE</option>
+                        <option value="44" class="text-center">DEEP RIVER</option>
+                        <option value="45" class="text-center">DERBY</option>
+                        <option value="46" class="text-center">DURHAM</option>
+                        <option value="47" class="text-center">EAST CANAAN</option>
+                        <option value="48" class="text-center">EAST GRANBY</option>
+                        <option value="49" class="text-center">EAST HADDAM</option>
+                        <option value="50" class="text-center">EAST HAMPTON</option>
+                        <option value="51" class="text-center">EAST HARTFORD</option>
+                        <option value="52" class="text-center">EAST HARTLAND</option>
+                        <option value="53" class="text-center">EAST HAVEN</option>
+                        <option value="54" class="text-center">EAST LYME</option>
+                        <option value="55" class="text-center">EAST WINDSOR</option>
+                        <option value="56" class="text-center">EAST WOODSTOCK</option>
+                        <option value="57" class="text-center">EASTFORD</option>
+                        <option value="58" class="text-center">EASTON</option>
+                        <option value="59" class="text-center">ELLINGTON</option>
+                        <option value="60" class="text-center">ENFIELD</option>
+                        <option value="61" class="text-center">ESSEX</option>
+                        <option value="62" class="text-center">FAIRFIELD</option>
+                        <option value="63" class="text-center">FARMINGTON</option>
+                        <option value="64" class="text-center">FRANKLIN</option>
+                        <option value="65" class="text-center">GALES FERRY</option>
+                        <option value="66" class="text-center">GLASTONBURY</option>
+                        <option value="67" class="text-center">GOSHEN</option>
+                        <option value="68" class="text-center">GRANBY</option>
+                        <option value="69" class="text-center">GREENWICH</option>
+                        <option value="70" class="text-center">GRISWOLD</option>
+                        <option value="71" class="text-center">GROTON</option>
+                        <option value="72" class="text-center">GROTON LONG POINT</option>
+                        <option value="73" class="text-center">GUILFORD</option>
+                        <option value="74" class="text-center">HADDAM</option>
+                        <option value="75" class="text-center">HAMDEN</option>
+                        <option value="76" class="text-center">HAMPTON</option>
+                        <option value="77" class="text-center">HANOVER</option>
+                        <option value="78" class="text-center">HARTFORD</option>
+                        <option value="79" class="text-center">HARWINTON</option>
+                        <option value="80" class="text-center">HEBRON</option>
+                        <option value="81" class="text-center">HIGGANUM</option>
+                        <option value="82" class="text-center">IVORYTON</option>
+                        <option value="83" class="text-center">JEWETT CITY</option>
+                        <option value="84" class="text-center">KENT</option>
+                        <option value="85" class="text-center">KILLINGLY</option>
+                        <option value="86" class="text-center">KILLINGWORTH</option>
+                        <option value="87" class="text-center">LEBANON</option>
+                        <option value="88" class="text-center">LEDYARD</option>
+                        <option value="89" class="text-center">LISBON</option>
+                        <option value="90" class="text-center">LITCHFIELD</option>
+                        <option value="91" class="text-center">MADISON</option>
+                        <option value="92" class="text-center">MANCHESTER</option>
+                        <option value="93" class="text-center">MANSFIELD</option>
+                        <option value="94" class="text-center">MARLBOROUGH</option>
+                        <option value="95" class="text-center">MASHANTUCKET</option>
+                        <option value="96" class="text-center">MERIDEN</option>
+                        <option value="97" class="text-center">MIDDLEBURY</option>
+                        <option value="98" class="text-center">MIDDLEFIELD</option>
+                        <option value="99" class="text-center">MIDDLETOWN</option>
+                        <option value="100" class="text-center">MILFORD</option>
+                        <option value="101" class="text-center">MONROE</option>
+                        <option value="102" class="text-center">MONTVILLE</option>
+                        <option value="103" class="text-center">MOODUS</option>
+                        <option value="104" class="text-center">MOOSUP</option>
+                        <option value="105" class="text-center">MORRIS</option>
+                        <option value="106" class="text-center">MYSTIC</option>
+                        <option value="107" class="text-center">N HAVEN</option>
+                        <option value="108" class="text-center">NAUGATUCK</option>
+                        <option value="109" class="text-center">NEW BRITAIN</option>
+                        <option value="110" class="text-center">NEW CANAAN</option>
+                        <option value="111" class="text-center">NEW CANNAN</option>
+                        <option value="112" class="text-center">NEW FAIRFIELD</option>
+                        <option value="113" class="text-center">NEW HARTFORD</option>
+                        <option value="114" class="text-center">NEW HAVEN</option>
+                        <option value="115" class="text-center">NEW LONDON</option>
+                        <option value="116" class="text-center">NEW MILFORD</option>
+                        <option value="117" class="text-center">NEW PRESTON</option>
+                        <option value="118" class="text-center">NEWINGTON</option>
+                        <option value="119" class="text-center">NEWTOWN</option>
+                        <option value="120" class="text-center">NIANTIC</option>
+                        <option value="121" class="text-center">NO HAVEN</option>
+                        <option value="122" class="text-center">NORFOLK</option>
+                        <option value="123" class="text-center">NORTH BRANFORD</option>
+                        <option value="124" class="text-center">NORTH CANAAN</option>
+                        <option value="125" class="text-center">NORTH GRANBY</option>
+                        <option value="126" class="text-center">NORTH GROSVENORDALE</option>
+                        <option value="127" class="text-center">NORTH HAVEN</option>
+                        <option value="128" class="text-center">NORTH STONINGTON</option>
+                        <option value="129" class="text-center">NORTH WINDAM</option>
+                        <option value="130" class="text-center">NORTH WINDHAM</option>
+                        <option value="131" class="text-center">NORTHFORD</option>
+                        <option value="132" class="text-center">NORWALK</option>
+                        <option value="133" class="text-center">NORWICH</option>
+                        <option value="134" class="text-center">OAKDALE</option>
+                        <option value="135" class="text-center">OAKVILLE</option>
+                        <option value="136" class="text-center">OLD LYME</option>
+                        <option value="137" class="text-center">OLD SAYBROOK</option>
+                        <option value="138" class="text-center">ONECO</option>
+                        <option value="139" class="text-center">ORANGE</option>
+                        <option value="140" class="text-center">OXFORD</option>
+                        <option value="141" class="text-center">PAWCATUCK</option>
+                        <option value="142" class="text-center">PLAINFIELD</option>
+                        <option value="143" class="text-center">PLAINVILLE</option>
+                        <option value="144" class="text-center">PLANTSVILLE</option>
+                        <option value="145" class="text-center">PLYMOUTH</option>
+                        <option value="146" class="text-center">POMFRET</option>
+                        <option value="147" class="text-center">PORTLAND</option>
+                        <option value="148" class="text-center">PRESTON</option>
+                        <option value="149" class="text-center">PROSPECT</option>
+                        <option value="150" class="text-center">PUTNAM</option>
+                        <option value="151" class="text-center">QUAKER HILL</option>
+                        <option value="152" class="text-center">QUINEBAUG</option>
+                        <option value="153" class="text-center">REDDING</option>
+                        <option value="154" class="text-center">RIDGEFIELD</option>
+                        <option value="155" class="text-center">ROCKVILLE</option>
+                        <option value="156" class="text-center">ROCKY HILL</option>
+                        <option value="157" class="text-center">ROGERS</option>
+                        <option value="158" class="text-center">S GLASTONBURY</option>
+                        <option value="159" class="text-center">SALEM</option>
+                        <option value="160" class="text-center">SALISBURY</option>
+                        <option value="161" class="text-center">SANDY HOOK</option>
+                        <option value="162" class="text-center">SEYMOUR</option>
+                        <option value="163" class="text-center">SHARON</option>
+                        <option value="164" class="text-center">SHELTON</option>
+                        <option value="165" class="text-center">SHERMAN</option>
+                        <option value="166" class="text-center">SIMSBURY</option>
+                        <option value="167" class="text-center">SOMERS</option>
+                        <option value="168" class="text-center">SOUTH WINDSOR</option>
+                        <option value="169" class="text-center">SOUTHBURY</option>
+                        <option value="170" class="text-center">SOUTHINGTON</option>
+                        <option value="171" class="text-center">SPRAGUE</option>
+                        <option value="172" class="text-center">STAFFORD</option>
+                        <option value="173" class="text-center">STAFFORD SPGS</option>
+                        <option value="174" class="text-center">STAFFORD SPRINGS</option>
+                        <option value="175" class="text-center">STAMFORD</option>
+                        <option value="176" class="text-center">STERLING</option>
+                        <option value="177" class="text-center">STONINGTON</option>
+                        <option value="178" class="text-center">STORRS</option>
+                        <option value="179" class="text-center">STRATFORD</option>
+                        <option value="180" class="text-center">SUFFIELD</option>
+                        <option value="181" class="text-center">TAFTVILLE</option>
+                        <option value="182" class="text-center">TARIFFVILLE</option>
+                        <option value="183" class="text-center">TERRYVILLE</option>
+                        <option value="184" class="text-center">THOMASTON</option>
+                        <option value="185" class="text-center">THOMPSON</option>
+                        <option value="186" class="text-center">TOLLAND</option>
+                        <option value="187" class="text-center">TORRINGTON</option>
+                        <option value="188" class="text-center">TRUMBULL</option>
+                        <option value="189" class="text-center">UNCASVILLE</option>
+                        <option value="190" class="text-center">UNIONVILLE</option>
+                        <option value="191" class="text-center">VERNON</option>
+                        <option value="192" class="text-center">VOLUNTOWN</option>
+                        <option value="193" class="text-center">W HAVEN</option>
+                        <option value="194" class="text-center">WALLINGFORD</option>
+                        <option value="195" class="text-center">WARREN</option>
+                        <option value="196" class="text-center">WASHINGTON</option>
+                        <option value="197" class="text-center">WATERBURY</option>
+                        <option value="198" class="text-center">WATERFORD</option>
+                        <option value="199" class="text-center">WATERTOWN</option>
+                        <option value="200" class="text-center">WAUREGAN</option>
+                        <option value="201" class="text-center">WEATOGUE</option>
+                        <option value="202" class="text-center">WEST HARTFORD</option>
+                        <option value="203" class="text-center">WEST HAVEN</option>
+                        <option value="204" class="text-center">WEST STAFFORD</option>
+                        <option value="205" class="text-center">WEST SUFFIELD</option>
+                        <option value="206" class="text-center">WESTBROOK</option>
+                        <option value="207" class="text-center">WESTON</option>
+                        <option value="208" class="text-center">WESTPORT</option>
+                        <option value="209" class="text-center">WETHERSFIELD</option>
+                        <option value="210" class="text-center">WILLIMANTIC</option>
+                        <option value="211" class="text-center">WILLINGTON</option>
+                        <option value="212" class="text-center">WILTON</option>
+                        <option value="213" class="text-center">WINCHESTER</option>
+                        <option value="214" class="text-center">WINDHAM</option>
+                        <option value="215" class="text-center">WINDSOR</option>
+                        <option value="216" class="text-center">WINDSOR LOCKS</option>
+                        <option value="217" class="text-center">WINSTED</option>
+                        <option value="218" class="text-center">WOLCOTT</option>
+                        <option value="219" class="text-center">WOODBRIDGE</option>
+                        <option value="220" class="text-center">WOODBURY</option>
+                        <option value="221" class="text-center">WOODSTOCK</option>
+
+                      </select>
+
+                    </td>
+
+                  </tr>
+
+                </tbody>
+          
+              </table>
+
+            </form>
+
+          </div>
+
+          <div class="col-4">
+
+            <div class="row align-items-center">
+              <div class="col text-center">
+                <span class="fw-bold text-white">Drug predicted to have caused Death:</span>
+
+                {% if answer == "Methadone" %}
+                  <img src="{% static 'img/methadone.png' %}" class="mt-4 border border-dark border-3" height="200" width="200">
+                {% elif answer == "Amphet" %}
+                  <img src="{% static 'img/amphet.png' %}" class="mt-4 border border-dark border-3" height="200" width="200">
+                {% elif answer == "Benzodiazepine" %}
+                  <img src="{% static 'img/benzodiazepine.png' %}" class="mt-4 border border-dark border-3" height="200" width="200">
+                {% elif answer == "Cocaine" %}
+                  <img src="{% static 'img/cocaine.png' %}" class="mt-4 border border-dark border-3" 
+                  height="200" width="200">
+                {% elif answer == "Fentanyl Analogue" %}
+                  <img src="{% static 'img/fentanyl_analogue.png' %}" class="mt-4 border border-dark border-3" height="200" width="200">
+                {% elif answer == "Heroin" %}
+                  <img src="{% static 'img/heroin.png' %}" class="mt-4 border border-dark border-3" height="200" width="200">
+                {% elif answer == "Hydrocodone" %}
+                  <img src="{% static 'img/hydrocodone.png' %}" class="mt-4 border border-dark border-3" height="200" width="200">
+                {% elif answer == "Hydromorphone" %}
+                  <img src="{% static 'img/hydromorphone.png' %}" class="mt-4 border border-dark border-3" height="200" width="200">
+                {% elif answer == "Oxycodone" %}
+                  <img src="{% static 'img/oxycodone.png' %}" class="mt-4 border border-dark border-3" height="200" width="200">
+                {% elif answer == "Oxymorphone" %}
+                  <img src="{% static 'img/oxymorphone.png' %}" class="mt-4 border border-dark border-3" height="200" width="200"> 
+                {% elif answer == "Tramad" %}
+                  <img src="{% static 'img/tramad.png' %}" class="mt-4 border border-dark border-3" height="200" width="200">   
+                {% endif %}
+
+                
+              </div>
+              <span class="fw-bold text-white text-center fs-4 mb-3">{{ answer }}</span>
+
+          </div>
+
+        </div>
+      
+        </div>
+
+        <div class="row text-center mb-4" style="max-width: 150px; margin-left: auto; margin-right: auto;" >
+
+          <button type="button" class="btn btn-primary" onclick="location.href = `{% url 'predict' %}`;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"></path>
+          <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"></path>
+          </svg>
+            Refresh
+          </button> 
+        
+      
+      </section>
+        
+                
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+  </body>
+</html>
